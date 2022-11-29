@@ -5,7 +5,10 @@ class CollapseBaseTreeNode(TreeNode):
     """ Base class for all text alignment tag class. """
 
     # HTML template for rendering
-    html_render_template = '<div class="{name}">{inner_html}</div>\n'
+    html_render_template = '<div ' \
+                           'class="{name}" ' \
+                           'style="border-left: #e9e9e9 1px solid; padding-left: 10px; margin-top: 40px;"' \
+                           '>{inner_html}</div>\n'
 
     def render_html(self, inner_html, **kwargs):
         """
