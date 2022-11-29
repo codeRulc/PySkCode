@@ -41,7 +41,7 @@ class ImageTreeNode(TreeNode):
     source_link_attr_name = 'src'
 
     # Allowed schemes for URL
-    allowed_schemes = ('http', 'https', 'data')
+    allowed_schemes = ('http', 'https')
 
     # HTML template for rendering
     html_render_template = '<img src="{src_link}"{extra_args} />'
@@ -50,10 +50,9 @@ class ImageTreeNode(TreeNode):
         """
         Get the image source link URL.
         """
-        relative_url_base = get_relative_url_base(self.root_tree_node)
         if src_link := self.attrs.get(self.source_link_attr_name):
-            return sanitize_url(src_link, allowed_schemes=self.allowed_schemes,
-                                absolute_base_url=relative_url_base)
+            return src_link
+        relative_url_base = get_relative_url_base(self.root_tree_node)
         src_link = self.get_raw_content().strip()
         return sanitize_url(src_link, allowed_schemes=self.allowed_schemes,
                             absolute_base_url=relative_url_base)
