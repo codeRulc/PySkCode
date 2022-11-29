@@ -37,7 +37,7 @@ class UrlLinkTreeNode(TreeNode):
         """
         Return ``True`` if the target URL is in the tag content (not in attributes).
         """
-        return self.name not in self.attrs
+        return self.name not in self.attrs and self.href_attr_name not in self.attrs
 
     def get_nofollow_flag(self):
         """
