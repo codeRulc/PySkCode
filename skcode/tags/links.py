@@ -27,6 +27,9 @@ class UrlLinkTreeNode(TreeNode):
     # Title attribute name
     title_attr_name = 'title'
 
+    # Href attribute name
+    href_attr_name = 'href'
+
     # HTML template for rendering
     html_render_template = '<a href="{src_link}"{extra_args}>{inner_html}</a>'
 
@@ -46,10 +49,10 @@ class UrlLinkTreeNode(TreeNode):
         """
         Return the target link URL.
         """
-        if self.is_url_inside_tag_content():
-            target_url = self.get_raw_content().strip()
-        else:
-            target_url = self.attrs.get(self.name, '')
+
+        target_url = (self.attrs.get(self.name, '') or
+                      self.attrs.get(self.href_attr_name, '') or
+                      self.get_raw_content().strip())
         relative_url_base = get_relative_url_base(self.root_tree_node)
         return sanitize_url(target_url, absolute_base_url=relative_url_base)
 
