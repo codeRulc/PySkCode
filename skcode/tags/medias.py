@@ -41,7 +41,7 @@ class ImageTreeNode(TreeNode):
     source_link_attr_name = 'src'
 
     # Allowed schemes for URL
-    allowed_schemes = ('http', 'https')
+    allowed_schemes = ('http', 'https', 'data')
 
     # HTML template for rendering
     html_render_template = '<img src="{src_link}"{extra_args} />'
