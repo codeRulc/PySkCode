@@ -110,6 +110,10 @@ from .electronic import NotNotationTreeNode
 from .internalspecials import NoParseTreeNode
 from .notabene import NotaBeneTreeNode
 from .postscriptum import PostScriptumTreeNode
+from .collapse import (
+    CollapseTreeNode,
+    Collapse2TreeNode
+)
 
 
 # Default list of recognized tags
@@ -122,6 +126,10 @@ DEFAULT_RECOGNIZED_TAGS_LIST = (
     generate_title_cls(4),
     generate_title_cls(5),
     generate_title_cls(6),
+
+    # --- Collapse
+    CollapseTreeNode,
+    Collapse2TreeNode,
 
     # --- Code blocks
     CodeBlockTreeNode,
