@@ -7,11 +7,14 @@ from gettext import gettext as _
 from html import escape as escape_html
 from html import unescape as unescape_html_entities
 
-from pygments import highlight
-from pygments.formatters import HtmlFormatter
-from pygments.lexers import get_lexer_by_name
-from pygments.styles import get_style_by_name
-from pygments.util import ClassNotFound
+try:
+    from pygments import highlight
+    from pygments.formatters import HtmlFormatter
+    from pygments.lexers import get_lexer_by_name
+    from pygments.styles import get_style_by_name
+    from pygments.util import ClassNotFound
+except (ImportError, ModuleNotFoundError):
+    pass
 
 from ..etree import TreeNode
 from ..tools import sanitize_url, slugify
